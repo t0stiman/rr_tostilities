@@ -1,0 +1,10 @@
+{
+	"Id": "rr_utilities",
+	"Version": "0.0.1",
+	"DisplayName": "Railroader Utilities mod",
+	"Author": "Tostiman",
+	"EntryMethod": "rr_utilities.Main.Load",
+	"AssemblyName": "rr_utilities.dll",
+	"HomePage": "https://github.com/t0stiman/rr_utilities",
+	"Repository": "https://raw.githubusercontent.com/t0stiman/rr_utilities/master/repository.json"
+}
