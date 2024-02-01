@@ -6,11 +6,14 @@ namespace rr_utilities
 {
 	public class Settings : UnityModManager.ModSettings
 	{
+		private const int SPACE = 15;
+		
 		public float PushForceMultiplier = 10;
 		private string PushForceMultiplier_text;
 
 		public bool DisableDerailing = false;
 		public bool DisableDamage = false;
+		public bool EnableBunnyHopping = false;
 		
 		public void Setup()
 		{
@@ -19,20 +22,30 @@ namespace rr_utilities
 		
 		public void Draw(UnityModManager.ModEntry modEntry)
 		{
-			GUILayout.Label("Note: these only work in multiplayer if you are the server host.");
-			GUILayout.Space(20f);
+			GUILayout.Label("These always work:");
+			GUILayout.Space(SPACE);
 			
-			GUILayout.Label("Car push force multiplier. Higher number -> bigger YEET.");
-			DrawFloatInput(ref PushForceMultiplier_text, ref PushForceMultiplier);
+			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Hold space to keep jumping");
+			
+			GUILayout.Space(SPACE);
+			GUILayout.Label("These only work in multiplayer if you are the server host:");
+			GUILayout.Space(SPACE);
+			
+			DrawFloatInput("Car push force multiplier. Higher number -> bigger YEET.", 
+				ref PushForceMultiplier_text, ref PushForceMultiplier);
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
 		}
 
-		private void DrawFloatInput(ref string text, ref float number)
+		private void DrawFloatInput(string descriptionText, ref string fieldText, ref float number)
 		{
-			text = GUILayout.TextField(text);
-			if (float.TryParse(text, out float parsed))
+			GUILayout.BeginHorizontal();
+			GUILayout.Label(descriptionText);
+			fieldText = GUILayout.TextField(fieldText);
+			GUILayout.EndHorizontal();
+			
+			if (float.TryParse(fieldText, out float parsed))
 			{
 				number = parsed;
 			}
