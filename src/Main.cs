@@ -3,7 +3,7 @@ using System.Reflection;
 using UnityModManagerNet;
 using HarmonyLib;
 
-namespace rr_utilities;
+namespace tostilities;
 
 [EnableReloading]
 static class Main

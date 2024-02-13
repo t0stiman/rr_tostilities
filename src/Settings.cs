@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityModManagerNet;
 
-namespace rr_utilities
+namespace tostilities
 {
 	public class Settings : UnityModManager.ModSettings
 	{

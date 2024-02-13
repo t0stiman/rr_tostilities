@@ -3,7 +3,7 @@ using HarmonyLib;
 using Model;
 using Network;
 
-namespace rr_utilities.Patches;
+namespace tostilities.Patches;
 
 /// <summary>
 /// Disable derailments, report derailments

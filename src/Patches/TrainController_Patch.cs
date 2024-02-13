@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace rr_utilities.Patches;
+namespace tostilities.Patches;
 
 /// <summary>
 /// Super-human strength

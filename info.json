@@ -1,10 +1,10 @@
 {
-	"Id": "rr_utilities",
+	"Id": "tostilities",
 	"Version": "0.0.1",
-	"DisplayName": "Railroader Utilities mod",
+	"DisplayName": "Tostilities",
 	"Author": "Tostiman",
-	"EntryMethod": "rr_utilities.Main.Load",
-	"AssemblyName": "rr_utilities.dll",
-	"HomePage": "https://github.com/t0stiman/rr_utilities",
-	"Repository": "https://raw.githubusercontent.com/t0stiman/rr_utilities/master/repository.json"
+	"EntryMethod": "tostilities.Main.Load",
+	"AssemblyName": "tostilities.dll",
+	"HomePage": "https://github.com/t0stiman/rr_tostilities",
+	"Repository": "https://raw.githubusercontent.com/t0stiman/rr_tostilities/master/repository.json"
 }

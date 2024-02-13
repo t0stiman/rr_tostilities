@@ -1,7 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 
-namespace rr_utilities.Patches;
+namespace tostilities.Patches;
 
 [HarmonyPatch(typeof(UI.Console.Console))]
 [HarmonyPatch(nameof(UI.Console.Console.AddLine))]

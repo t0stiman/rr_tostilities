@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Network;
 
-namespace rr_utilities;
+namespace tostilities;
 
 public class DamageRegistrar
 {

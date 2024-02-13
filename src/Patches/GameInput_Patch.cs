@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UI;
 
-namespace rr_utilities.Patches;
+namespace tostilities.Patches;
 
 /// <summary>
 /// Bunny hop patch
