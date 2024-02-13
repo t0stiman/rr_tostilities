@@ -1,6 +1,5 @@
 ﻿using System;
 using HarmonyLib;
-using UI.Console;
 
 namespace rr_utilities.Patches;
 

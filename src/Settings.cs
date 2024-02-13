@@ -14,7 +14,7 @@ namespace rr_utilities
 		public bool DisableDerailing = false;
 		public bool DisableDamage = false;
 		public bool EnableBunnyHopping = false;
-		public bool ReportDamage = true; // todo
+		public bool ReportDamage = false;
 		public bool ConsoleTimeStamps = false;
 		
 		public void Setup()
@@ -39,6 +39,7 @@ namespace rr_utilities
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
+			ReportDamage = GUILayout.Toggle(ReportDamage, "Report damage to rolling stock and derailments in the console");
 		}
 
 		private void DrawFloatInput(string descriptionText, ref string fieldText, ref float number)

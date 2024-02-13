@@ -23,3 +23,13 @@ public class GameInput_JumpDown_Patch
 		return false; //skip original function
 	}
 }
+
+[HarmonyPatch(typeof(GameInput))]
+[HarmonyPatch(nameof(GameInput.Update))]
+public class GameInput_Update_Patch
+{
+	private static void Prefix()
+	{
+		DamageRegistrar.Instance.Update();
+	}
+}
