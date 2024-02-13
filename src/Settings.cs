@@ -14,6 +14,8 @@ namespace rr_utilities
 		public bool DisableDerailing = false;
 		public bool DisableDamage = false;
 		public bool EnableBunnyHopping = false;
+		public bool ReportDamage = true; // todo
+		public bool ConsoleTimeStamps = false;
 		
 		public void Setup()
 		{
@@ -22,13 +24,14 @@ namespace rr_utilities
 		
 		public void Draw(UnityModManager.ModEntry modEntry)
 		{
-			GUILayout.Label("These always work:");
+			GUILayout.Label("These always work and only apply to you:");
 			GUILayout.Space(SPACE);
 			
 			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Hold space to keep jumping");
+			ConsoleTimeStamps = GUILayout.Toggle(ConsoleTimeStamps, "Show a timestamp on every message in the console");
 			
 			GUILayout.Space(SPACE);
-			GUILayout.Label("These only work in multiplayer if you are the server host:");
+			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
 			GUILayout.Space(SPACE);
 			
 			DrawFloatInput("Car push force multiplier. Higher number -> bigger YEET.", 

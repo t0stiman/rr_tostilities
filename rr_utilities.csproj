@@ -119,7 +119,8 @@
 
     <!-- others-->
     <Reference Include="UnityModManager" />
-    <Reference Include="KeyValue.Runtime" />    
+    <Reference Include="KeyValue.Runtime" />
+    <Reference Include="Serilog" />
   </ItemGroup>
 
   <ItemGroup>
