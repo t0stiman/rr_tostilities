@@ -27,15 +27,14 @@ namespace tostilities
 			GUILayout.Label("These always work and only apply to you:");
 			GUILayout.Space(SPACE);
 			
-			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Hold space to keep jumping");
+			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Enable bunny hopping (hold space to keep jumping)");
 			ConsoleTimeStamps = GUILayout.Toggle(ConsoleTimeStamps, "Show a timestamp on every message in the console");
 			
 			GUILayout.Space(SPACE);
 			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
 			GUILayout.Space(SPACE);
 			
-			DrawFloatInput("Car push force multiplier. Higher number -> bigger YEET.", 
-				ref PushForceMultiplier_text, ref PushForceMultiplier);
+			DrawFloatInput("Car push force multiplier. Higher number -> bigger YEET.", ref PushForceMultiplier_text, ref PushForceMultiplier);
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
