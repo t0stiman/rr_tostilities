@@ -6,6 +6,7 @@ namespace tostilities
 {
 	public class Settings : UnityModManager.ModSettings
 	{
+		public const string playername_replaceo = "<playername>";
 		private const int SPACE = 15;
 		
 		public float PushForceMultiplier = 10;
@@ -16,6 +17,9 @@ namespace tostilities
 		public bool EnableBunnyHopping = false;
 		public bool ReportDamage = false;
 		public bool ConsoleTimeStamps = false;
+
+		public bool EnableWelcomeMessage = false;
+		public string WelcomeMessage = "<playername>, welcome to the server!";
 		
 		public void Setup()
 		{
@@ -39,6 +43,14 @@ namespace tostilities
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
 			ReportDamage = GUILayout.Toggle(ReportDamage, "Report damage to rolling stock and derailments in the console");
+			
+			EnableWelcomeMessage = GUILayout.Toggle(EnableWelcomeMessage, "Show a customizable message in the console when a new player joins");
+
+			if (EnableWelcomeMessage)
+			{
+				GUILayout.Label($"Welcome message text. {playername_replaceo} will be replaced with the name of the player.");
+				WelcomeMessage = GUILayout.TextArea(WelcomeMessage);
+			}
 		}
 
 		private void DrawFloatInput(string descriptionText, ref string fieldText, ref float number)
