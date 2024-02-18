@@ -12,6 +12,7 @@ All features are off by default and can be enabled from the mod's settings menu 
 - Disable derailing
 - Disable damage to rolling stock
 - Report damage to rolling stock and derailments in the console
+- Show a customizable message in the console when a new player joins
 
 ![screenshots/derailnoti1.png](screenshots/derailnoti1.png)
 
