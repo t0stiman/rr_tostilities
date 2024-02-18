@@ -15,6 +15,5 @@ public class Console_AddLine_Patch
 		}
 
 		text = $"{DateTime.Now.ToString("HH:mm")} | " + text;
-		//todo PlayersManager.NotifyOfNewPlayers already has a timestamp
 	}
 }

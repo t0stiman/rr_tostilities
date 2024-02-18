@@ -9,7 +9,7 @@ namespace tostilities
 		public const string playername_replaceo = "<playername>";
 		private const int SPACE = 15;
 		
-		public float PushForceMultiplier = 10;
+		public int PushForceMultiplier = 10;
 		private string PushForceMultiplier_text;
 
 		public bool DisableDerailing = false;
@@ -38,7 +38,7 @@ namespace tostilities
 			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
 			GUILayout.Space(SPACE);
 			
-			DrawFloatInput("Car push force multiplier. Higher number -> bigger YEET.", ref PushForceMultiplier_text, ref PushForceMultiplier);
+			DrawIntInput("Car push force multiplier. Higher number -> bigger YEET.", ref PushForceMultiplier_text, ref PushForceMultiplier);
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
@@ -53,14 +53,14 @@ namespace tostilities
 			}
 		}
 
-		private void DrawFloatInput(string descriptionText, ref string fieldText, ref float number)
+		private void DrawIntInput(string descriptionText, ref string fieldText, ref int number)
 		{
 			GUILayout.BeginHorizontal();
 			GUILayout.Label(descriptionText);
 			fieldText = GUILayout.TextField(fieldText);
 			GUILayout.EndHorizontal();
 			
-			if (float.TryParse(fieldText, out float parsed))
+			if (int.TryParse(fieldText, out int parsed))
 			{
 				number = parsed;
 			}
