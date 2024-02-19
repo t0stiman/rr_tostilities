@@ -9,8 +9,9 @@ namespace tostilities
 		public const string playername_replaceo = "<playername>";
 		private const int SPACE = 15;
 		
-		public int PushForceMultiplier = 10;
+		public int PushForceMultiplier = 1;
 		private string PushForceMultiplier_text;
+		public bool DisablePushSpeedDistanceLimiter = false;
 
 		public bool DisableDerailing = false;
 		public bool DisableDamage = false;
@@ -20,7 +21,7 @@ namespace tostilities
 
 		public bool EnableWelcomeMessage = false;
 		public string WelcomeMessage = "<playername>, welcome to the server!";
-		
+
 		public void Setup()
 		{
 			PushForceMultiplier_text = PushForceMultiplier.ToString("0.0");
@@ -39,6 +40,7 @@ namespace tostilities
 			GUILayout.Space(SPACE);
 			
 			DrawIntInput("Car push force multiplier. Higher number -> bigger YEET.", ref PushForceMultiplier_text, ref PushForceMultiplier);
+			DisablePushSpeedDistanceLimiter = GUILayout.Toggle(DisablePushSpeedDistanceLimiter, "By default, the speed of pushed cars is limited to 3 mph and the distance to 5 m. This tweak removes those limitations");
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
