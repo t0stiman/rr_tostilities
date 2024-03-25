@@ -2,6 +2,11 @@
     "Releases": [
         {
             "Id": "tostilities",
+            "Version": "0.0.4",
+            "DownloadUrl": "https://github.com/t0stiman/rr_tostilities/releases/download/v0.0.4/tostilities.zip"
+        },
+        {
+            "Id": "tostilities",
             "Version": "0.0.3",
             "DownloadUrl": "https://github.com/t0stiman/rr_tostilities/releases/download/v0.0.3/tostilities.zip"
         },
