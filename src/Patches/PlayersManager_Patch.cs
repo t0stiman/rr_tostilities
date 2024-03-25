@@ -17,38 +17,39 @@ public class PlayersManager_NotifyOfNewPlayers_Patch
 {
 	private static bool Prefix(ref PlayersManager __instance, Dictionary<string, Snapshot.Player> players)
 	{
-		if (!Main.MySettings.EnableWelcomeMessage && !Main.MySettings.ConsoleTimeStamps)
+		if (!Main.MySettings.EnableWelcomeMessage && !Main.MySettings.ConsoleStampsRealTime)
 		{
-			return true; //execute original function
+			return Constants.EXECUTE_ORIGINAL;
 		}
 		
 		// ============= unchanged =============
 		
-		HashSet<PlayerId> playerIdSet = new HashSet<PlayerId>(__instance._remotePlayers.Keys);
-		HashSet<Snapshot.Player> playerSet = new HashSet<Snapshot.Player>();
-		foreach (KeyValuePair<string, Snapshot.Player> player1 in players)
+		var playerIdSet = new HashSet<PlayerId>(__instance._remotePlayers.Keys);
+		var playerSet = new HashSet<Snapshot.Player>();
+		foreach (var player1 in players)
 		{
-			PlayerId key = new PlayerId(player1.Key);
+			var key = new PlayerId(player1.Key);
 			playerIdSet.Remove(key);
 			if (!__instance._remotePlayers.ContainsKey(key) && key != PlayersManager.PlayerId)
 			{
-				Snapshot.Player player2 = player1.Value;
+				var player2 = player1.Value;
 				playerSet.Add(player2);
 			}
 		}
 		if (playerSet.Any())
 		{
 			Log.Information("Connected: {players}", playerSet);
-			string playerNames = string.Join(", ", playerSet.OrderBy(p => p.Name).Select(p => p.Name));
-			bool flag = playerSet.Count != 1;
+			var playerNames = string.Join(", ", playerSet.OrderBy(p => p.Name).Select(p => p.Name));
+			var plural = playerSet.Count != 1;
 			if (__instance._hasNotifiedOfPlayers)
 			{
 				// ============= changed =============
 
-				var timeString = Main.MySettings.ConsoleTimeStamps ? "" : DateTime.Now.ToString("HH:mm")+" ";
+				// 24h format instead of AM PM
+				var timeString = Main.MySettings.ConsoleStampsRealTime ? "" : DateTime.Now.ToString("HH:mm")+" ";
 				Console.Log($"{timeString}{playerNames} has connected.");
 
-				if (Main.MySettings.EnableWelcomeMessage)
+				if (Main.MySettings.EnableWelcomeMessage && StateManager.IsHost)
 				{
 					var message = Main.MySettings.WelcomeMessage.Replace(Settings.playername_replaceo, playerNames);
 					Multiplayer.Broadcast(message);
@@ -58,12 +59,12 @@ public class PlayersManager_NotifyOfNewPlayers_Patch
 			}
 			else
 			{
-				Console.Log(playerNames + " " + (flag ? "are" : "is") + " connected.");
+				Console.Log(playerNames + " " + (plural ? "are" : "is") + " connected.");
 			}
 
 			__instance._hasNotifiedOfPlayers = true;
 		}
-		foreach (PlayerId playerId in playerIdSet)
+		foreach (var playerId in playerIdSet)
 		{
 			RemotePlayer remotePlayer;
 			if (!__instance._remotePlayers.TryGetValue(playerId, out remotePlayer))
@@ -76,14 +77,14 @@ public class PlayersManager_NotifyOfNewPlayers_Patch
 				
 				// ============= changed =============
 				
-				var timeString = Main.MySettings.ConsoleTimeStamps ? "" : DateTime.Now.ToString("HH:mm")+" ";
+				var timeString = Main.MySettings.ConsoleStampsRealTime ? "" : DateTime.Now.ToString("HH:mm")+" ";
 				Console.Log($"{timeString}{remotePlayer.playerName} has disconnected.");
 				
 				// ============= unchanged =============
 			}
 		}
 		
-		return false; //skip original function
+		return Constants.SKIP_ORIGINAL;
 	}
 }
 

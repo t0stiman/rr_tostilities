@@ -15,12 +15,12 @@ public class GameInput_JumpDown_Patch
 	{
 		if (!Main.MySettings.EnableBunnyHopping)
 		{
-			return true; //execute original function
+			return Constants.EXECUTE_ORIGINAL;
 		}
 
 		__result = __instance._jumpAction.IsPressed();
 		
-		return false; //skip original function
+		return Constants.SKIP_ORIGINAL;
 	}
 }
 

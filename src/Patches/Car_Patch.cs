@@ -17,12 +17,12 @@ public class Car_ApplyDerailmentDelta_Patch
 	{
 		if (delta <= 0.0) // re-rail
 		{
-			return true; //execute original function
+			return Constants.EXECUTE_ORIGINAL;
 		}
 
 		if (Main.MySettings.DisableDerailing)
 		{
-			return false; //skip original function
+			return Constants.SKIP_ORIGINAL;
 		}
 
 		if (Main.MySettings.ReportDamage && !__instance.IsDerailed)
@@ -46,12 +46,12 @@ public class Car_ApplyConditionDelta_Patch
 	{
 		if (delta >= 0.0) // repair
 		{
-			return true; //execute original function
+			return Constants.EXECUTE_ORIGINAL;
 		}
 
 		if (Main.MySettings.DisableDamage)
 		{
-			return false; //skip original function
+			return Constants.SKIP_ORIGINAL;
 		}
 
 		if (Main.MySettings.ReportDamage)

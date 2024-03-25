@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Network;
+using UnityEngine;
 
 namespace tostilities;
 
@@ -46,8 +47,11 @@ public class DamageRegistrar
 		{
 			if ((DateTime.Now - e.When).TotalSeconds >= 2.0)
 			{
-				var damagePercent = (int)Math.Ceiling(e.Damage * 100);
-				Multiplayer.Broadcast($"<noparse>{e.CarDisplayName}</noparse> received <b>{damagePercent}%</b> damage!");
+				var damagePercent = Mathf.RoundToInt(e.Damage * 100);
+				if (damagePercent > 1) //damage smaller than 1 is often false positive
+				{
+					Multiplayer.Broadcast($"<noparse>{e.CarDisplayName}</noparse> received <b>{damagePercent}%</b> damage!");
+				}
 				damageEntries.Remove(e);
 			}
 		}

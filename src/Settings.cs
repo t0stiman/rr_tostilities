@@ -17,7 +17,7 @@ namespace tostilities
 		public bool DisableDamage = false;
 		public bool EnableBunnyHopping = false;
 		public bool ReportDamage = false;
-		public bool ConsoleTimeStamps = false;
+		public bool ConsoleStampsRealTime = false;
 
 		public bool EnableWelcomeMessage = false;
 		public string WelcomeMessage = "<playername>, welcome to the server!";
@@ -33,7 +33,7 @@ namespace tostilities
 			GUILayout.Space(SPACE);
 			
 			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Enable bunny hopping (hold space to keep jumping)");
-			ConsoleTimeStamps = GUILayout.Toggle(ConsoleTimeStamps, "Show a timestamp on every message in the console");
+			ConsoleStampsRealTime = GUILayout.Toggle(ConsoleStampsRealTime, "Show real-life time instead of in-game time on messages in the console");
 			
 			GUILayout.Space(SPACE);
 			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
