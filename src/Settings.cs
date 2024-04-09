@@ -21,6 +21,12 @@ namespace tostilities
 
 		public bool EnableWelcomeMessage = false;
 		public string WelcomeMessage = "<playername>, welcome to the server!";
+		public bool MergePaymentMessages = false;
+		public bool CrewDinges = false;
+		
+		//logging stuff
+		public bool LogToConsole = false;
+		public bool EnableDebugLogs = false;
 
 		public void Setup()
 		{
@@ -34,6 +40,7 @@ namespace tostilities
 			
 			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Enable bunny hopping (hold space to keep jumping)");
 			ConsoleStampsRealTime = GUILayout.Toggle(ConsoleStampsRealTime, "Show real-life time instead of in-game time on messages in the console");
+			CrewDinges = GUILayout.Toggle(CrewDinges, "Make it possible to add any stock you own to a crew");
 			
 			GUILayout.Space(SPACE);
 			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
@@ -47,12 +54,21 @@ namespace tostilities
 			ReportDamage = GUILayout.Toggle(ReportDamage, "Report damage to rolling stock and derailments in the console");
 			
 			EnableWelcomeMessage = GUILayout.Toggle(EnableWelcomeMessage, "Show a customizable message in the console when a new player joins");
+			MergePaymentMessages = GUILayout.Toggle(MergePaymentMessages, "When many cars get delivered at once, show only 1 payment message in the console");
 
 			if (EnableWelcomeMessage)
 			{
 				GUILayout.Label($"Welcome message text. {playername_replaceo} will be replaced with the name of the player.");
 				WelcomeMessage = GUILayout.TextArea(WelcomeMessage);
 			}
+			
+			// logging stuff
+			GUILayout.Space(SPACE);
+			GUILayout.Label("Logging stuff: ");
+			GUILayout.Space(SPACE);
+			
+			LogToConsole = GUILayout.Toggle(LogToConsole, "Log messages to the in-game console as well as Player.log");
+			EnableDebugLogs = GUILayout.Toggle(EnableDebugLogs, "Enable debug messages");
 		}
 
 		private void DrawIntInput(string descriptionText, ref string fieldText, ref int number)

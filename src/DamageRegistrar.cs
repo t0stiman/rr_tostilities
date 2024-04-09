@@ -43,17 +43,18 @@ public class DamageRegistrar
 
 	public void Update()
 	{
-		foreach (var e in damageEntries)
+		for (int index = damageEntries.Count-1; index >= 0; index--)
 		{
-			if ((DateTime.Now - e.When).TotalSeconds >= 2.0)
+			var e = damageEntries[index];
+		
+			if ((DateTime.Now - e.When).TotalSeconds < 2.0) { continue; }
+			
+			var damagePercent = Mathf.RoundToInt(e.Damage * 100);
+			if (damagePercent > 1) //damage smaller than 1 is often false positive
 			{
-				var damagePercent = Mathf.RoundToInt(e.Damage * 100);
-				if (damagePercent > 1) //damage smaller than 1 is often false positive
-				{
-					Multiplayer.Broadcast($"<noparse>{e.CarDisplayName}</noparse> received <b>{damagePercent}%</b> damage!");
-				}
-				damageEntries.Remove(e);
+				Multiplayer.Broadcast($"<noparse>{e.CarDisplayName}</noparse> received <b>{damagePercent}%</b> damage!");
 			}
+			damageEntries.RemoveAt(index);
 		}
 	}
 	
