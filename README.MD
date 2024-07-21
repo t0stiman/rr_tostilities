@@ -15,7 +15,6 @@ All features are off by default and can be enabled from the mod's settings menu 
 - Report damage to rolling stock and derailments in the console
 - Show a customizable message in the console when a new player joins
 - Make it possible to add any stock you own to a crew
-- When many cars get delivered at once, show only 1 payment message in the console
 
 ## How to install
 

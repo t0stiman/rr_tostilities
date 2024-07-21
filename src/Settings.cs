@@ -1,5 +1,4 @@
-﻿using UI;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityModManagerNet;
 
 namespace tostilities
@@ -16,12 +15,12 @@ namespace tostilities
 		public bool DisableDerailing = false;
 		public bool DisableDamage = false;
 		public bool EnableBunnyHopping = false;
-		public bool ReportDamage = false;
+		public bool ReportDamage = true;
 		public bool ConsoleStampsRealTime = false;
 
-		public bool EnableWelcomeMessage = false;
+		public bool EnableWelcomeMessage = true;
 		public string WelcomeMessage = "<playername>, welcome to the server!";
-		public bool MergePaymentMessages = false;
+		// public bool MergePaymentMessages = false;
 		public bool CrewDinges = false;
 		
 		//logging stuff
@@ -53,8 +52,9 @@ namespace tostilities
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");
 			ReportDamage = GUILayout.Toggle(ReportDamage, "Report damage to rolling stock and derailments in the console");
 			
+			//TODO
+			// MergePaymentMessages = GUILayout.Toggle(MergePaymentMessages, "When many cars get delivered at once, show only 1 payment message in the console");
 			EnableWelcomeMessage = GUILayout.Toggle(EnableWelcomeMessage, "Show a customizable message in the console when a new player joins");
-			MergePaymentMessages = GUILayout.Toggle(MergePaymentMessages, "When many cars get delivered at once, show only 1 payment message in the console");
 
 			if (EnableWelcomeMessage)
 			{
