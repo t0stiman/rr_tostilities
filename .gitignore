@@ -5,3 +5,4 @@ build/
 packages
 Directory.Build.targets
 Folder.DotSettings.user
+dist/
