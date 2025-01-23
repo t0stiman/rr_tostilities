@@ -8,7 +8,7 @@ namespace tostilities.Extensions;
 
 public static class UIPanelBuilder_Extensions
 {
-	public static bool AddTrainCrewDropdown2(this UIPanelBuilder builder, Car car)
+	public static bool AddTrainCrewDropdown_2(this UIPanelBuilder builder, Car car)
 	{
 		if(!car.IsOwnedByPlayer) // todo does this work if you're not the host
 		{

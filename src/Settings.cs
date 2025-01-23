@@ -34,19 +34,21 @@ namespace tostilities
 		
 		public void Draw(UnityModManager.ModEntry modEntry)
 		{
-			GUILayout.Label("These always work and only apply to you:");
+			GUILayout.Label("CLIENT-SIDE");
+			GUILayout.Label("These tweaks always work and only apply to you:");
 			GUILayout.Space(SPACE);
 			
 			EnableBunnyHopping = GUILayout.Toggle(EnableBunnyHopping, "Enable bunny hopping (hold space to keep jumping)");
 			ConsoleStampsRealTime = GUILayout.Toggle(ConsoleStampsRealTime, "Show real-life time instead of in-game time on messages in the console");
-			CrewDinges = GUILayout.Toggle(CrewDinges, "Make it possible to add any stock you own to a crew");
+			CrewDinges = GUILayout.Toggle(CrewDinges, "Make it possible to add any rolling stock you own to a crew");
 			
 			GUILayout.Space(SPACE);
-			GUILayout.Label("These only work in multiplayer if you are the server host, and apply to ALL players:");
+			GUILayout.Label("SERVER-SIDE");
+			GUILayout.Label("These tweaks only work in multiplayer if you are the server host, and apply to ALL players:");
 			GUILayout.Space(SPACE);
 			
 			DrawIntInput("Car push force multiplier. Higher number -> bigger YEET.", ref PushForceMultiplier_text, ref PushForceMultiplier);
-			DisablePushSpeedDistanceLimiter = GUILayout.Toggle(DisablePushSpeedDistanceLimiter, "By default, the speed of pushed cars is limited to 3 mph and the distance to 5 m. This tweak removes those limitations");
+			DisablePushSpeedDistanceLimiter = GUILayout.Toggle(DisablePushSpeedDistanceLimiter, "By default, the speed of pushed cars is limited to 3 mph and the distance to 5 m. This tweak removes those limitations.");
 			
 			DisableDerailing = GUILayout.Toggle(DisableDerailing, "Disable derailing");
 			DisableDamage = GUILayout.Toggle(DisableDamage, "Disable damage to rolling stock");

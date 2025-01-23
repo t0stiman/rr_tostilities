@@ -7,8 +7,8 @@ using UI.CarInspector;
 namespace tostilities.Patches;
 
 [HarmonyPatch(typeof(CarInspector))]
-[HarmonyPatch(nameof(CarInspector.PopulateWaybillPanel), typeof(UIPanelBuilder))]
-public class CarInspector_PopulateWaybillPanel_Patch
+[HarmonyPatch(nameof(CarInspector.PopulateOperationsPanel))]
+public class CarInspector_PopulateOperationsPanel_Patch
 {
 	private static bool Prefix(CarInspector __instance, UIPanelBuilder builder)
 	{
@@ -23,7 +23,7 @@ public class CarInspector_PopulateWaybillPanel_Patch
 			
 			// ==================================
 
-			if (builder2.AddTrainCrewDropdown2(__instance._car))
+			if (builder2.AddTrainCrewDropdown_2(__instance._car))
 			{
 				builder2.Spacer(4f);
 			}
