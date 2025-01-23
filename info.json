@@ -1,6 +1,6 @@
 {
 	"Id": "tostilities",
-	"Version": "0.0.5",
+	"Version": "0.0.6",
 	"DisplayName": "Tostilities",
 	"Author": "Tostiman",
 	"EntryMethod": "tostilities.Main.Load",
