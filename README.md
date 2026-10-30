@@ -4,11 +4,11 @@ A Railroader utilities mod.
 
 ## Features
 
-All features are off by default and can be enabled from the mod's settings menu (ctrl + F10). 
+All features are off by default and can be enabled from the mod's settings menu TODO where
 
 - Enable bunny hopping (hold space to keep jumping)
 - Show real-life time instead of in-game time on messages in the console
-- Car push force multiplier. Higher number -> bigger YEET.
+- Car push force multiplier. Higher number → bigger YEET.
 - By default, the speed of pushed cars is limited to 3 mph and the distance to 5 m. This tweak removes those limitations
 - Disable derailing
 - Disable damage to rolling stock
@@ -18,8 +18,10 @@ All features are off by default and can be enabled from the mod's settings menu 
 
 ## How to install
 
-1. install Unity Mod Manager(UMM) and configure it for Railroader
-2. download this mods zip and yeet it into UMM
+1. Download this mods zip and extract it into Documents/Railroader/Mods
+2. In RailRoader, enable Preferences → Features → Experimental → Allow Unsafe DLL Mods
+3. Restart the game
+4. Main menu → Mods → checkbox on this mod
 
 ## Support me?
 

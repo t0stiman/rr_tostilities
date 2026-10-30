@@ -9,16 +9,12 @@ public class DamageRegistrar
 {
 	private DamageRegistrar(){}
 
-	private static DamageRegistrar instance;
+	private static DamageRegistrar? instance;
 	public static DamageRegistrar Instance
 	{
 		get
 		{
-			if (instance is null)
-			{
-				instance = new DamageRegistrar();
-			}
-
+			instance ??= new DamageRegistrar();
 			return instance;
 		}
 	}

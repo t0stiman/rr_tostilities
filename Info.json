@@ -1,0 +1,13 @@
+{
+  "identifier": "com.tostiman/tostilities",
+  "name": "Tostilities",
+  "author": "Tostiman",
+  "version": "1.0.0",
+  "license": "MIT",
+  "assemblies": ["tostilities.dll"],
+  "dependencies": {
+    "required": [ "rr/game >=0.6.1" ]
+  },
+  "url": "https://nexusmods.com/railroader/mods/17",
+  "scope": "optional"
+}
