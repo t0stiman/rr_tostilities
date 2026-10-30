@@ -20,7 +20,7 @@ public class Settings
 	public bool ConsoleStampsRealTime = true;
 
 	public bool EnableWelcomeMessage = true;
-	public string WelcomeMessage = "<playername>, welcome to the server!"; //todo implement again
+	public string WelcomeMessage = "<playername>, welcome to the server!";
 	// public bool MergePaymentMessages = false;
 	public bool CrewDinges = true;
 		
