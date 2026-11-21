@@ -1,0 +1,6 @@
+<Project>
+	<PropertyGroup>
+		<ReferencePath>dlls</ReferencePath>
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath);</AssemblySearchPaths>
+	</PropertyGroup>
+</Project>

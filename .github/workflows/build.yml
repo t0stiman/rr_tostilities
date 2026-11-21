@@ -1,0 +1,62 @@
+name: Build
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  push:
+    branches:
+      - master
+  
+  pull_request:
+    branches:
+      - master
+
+env:
+  DLL_NAME: 'tostilities'
+  GAME_BRANCH: 'experimental'
+  DL_USER: ${{ secrets.DL_USER }}
+  DL_PASS: ${{ secrets.DL_PASS }}
+
+jobs:
+  build:
+    # only run on the main repo, not forks
+    if: github.repository == 't0stiman/rr_tostilities'
+    runs-on: ubuntu-latest
+
+    steps:    
+      - uses: actions/checkout@v7
+
+      - name: download game files
+        run: |
+          curl -fL -u "$DL_USER:$DL_PASS" -o "${GAME_BRANCH}.zip" "https://tostiman.com/steam/railroader/${GAME_BRANCH}.zip"
+          unzip "${GAME_BRANCH}.zip" -d dlls
+
+      - name: Setup Directory.Build.targets
+        run: cp .github/Directory.Build.targets .
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore nuget
+        run: dotnet restore
+
+      - name: Build mod
+        run: dotnet build --configuration Release --no-restore
+
+      - run: cp bin/Release/net472/${DLL_NAME}.dll .
+      - run: cp bin/Release/net472/0Harmony.dll .
+
+      - uses: actions/upload-artifact@v7
+        with: 
+          name: ${{ env.DLL_NAME }}
+          if-no-files-found: error
+          retention-days: 99999
+          path: |
+            ${{ env.DLL_NAME }}.dll
+            0Harmony.dll
+            Info.json
+            LICENSE
+            README.md
