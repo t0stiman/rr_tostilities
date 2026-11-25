@@ -46,17 +46,14 @@ jobs:
       - name: Build mod
         run: dotnet build --configuration Release --no-restore
 
-      - run: cp bin/Release/net472/${DLL_NAME}.dll .
-      - run: cp bin/Release/net472/0Harmony.dll .
+      - name: Copy files
+        run: |
+          mkdir artifact
+          cp -t artifact Info.json LICENSE README.md bin/Release/net472/${DLL_NAME}.dll bin/Release/net472/0Harmony.dll
 
-      - uses: actions/upload-artifact@v7
-        with: 
+      - name: Upload mod files
+        uses: actions/upload-artifact@v7
+        with:
           name: ${{ env.DLL_NAME }}
           if-no-files-found: error
-          retention-days: 99999
-          path: |
-            ${{ env.DLL_NAME }}.dll
-            0Harmony.dll
-            Info.json
-            LICENSE
-            README.md
+          path: artifact

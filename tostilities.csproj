@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<WarningsAsErrors>CS8600;CS8602;CS8603</WarningsAsErrors>
+		<LangVersion>14</LangVersion>
+		
 		<PackageId>tostilities</PackageId>
 		<RootNamespace>tostilities</RootNamespace>
+		
 		<Nullable>enable</Nullable>
+		<WarningsAsErrors>Nullable</WarningsAsErrors>
 	</PropertyGroup>
 
 	<ItemGroup>

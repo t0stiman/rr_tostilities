@@ -6,7 +6,7 @@
   "license": "MIT",
   "assemblies": ["tostilities.dll"],
   "dependencies": {
-    "required": [ "rr/game >=0.6.1" ]
+    "required": [ "rr/game >=0.6.3" ]
   },
   "url": "https://nexusmods.com/railroader/mods/17",
   "scope": "optional"
