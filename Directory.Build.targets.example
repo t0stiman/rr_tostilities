@@ -1,14 +1,18 @@
 <Project>
     <PropertyGroup>
         <RrInstallDir>/mnt/Data/SteamLibrary/steamapps/common/Railroader</RrInstallDir>
-        <ReferencePath>
-            $(RrInstallDir)/Railroader_Data/Managed/;
-            $(RrInstallDir)/Railroader_Data/Managed/UnityModManager/;
-        </ReferencePath>
+        <ReferencePath>$(RrInstallDir)/Railroader_Data/Managed/;</ReferencePath>
         <AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath);</AssemblySearchPaths>
     </PropertyGroup>
+
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <!-- Copy to game folder -->
-        <Copy SourceFiles="$(TargetPath);README.md;info.json;LICENSE" DestinationFolder="$(RrInstallDir)/Mods/tostilities" />
+        <!-- Copy to mods folder -->
+        <Copy SourceFiles="
+            $(TargetPath);
+            $(TargetDir)/0Harmony.dll;
+            README.md;
+            Info.json;
+            LICENSE"
+            DestinationFolder="$(HOME)/Documents/Railroader/ModDev/tostilities" />
     </Target>
 </Project>

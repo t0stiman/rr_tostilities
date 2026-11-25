@@ -3,6 +3,6 @@ bin
 obj
 build/
 packages
-Directory.Build.targets
+/Directory.Build.targets
 Folder.DotSettings.user
 dist/

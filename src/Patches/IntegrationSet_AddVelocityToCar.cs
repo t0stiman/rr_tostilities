@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Model;
 using Model.Physics;
 using UnityEngine;
 
@@ -8,19 +7,17 @@ namespace tostilities.Patches;
 /// <summary>
 /// Super-human strength
 /// </summary>
-[HarmonyPatch(typeof(IntegrationSet))]
-[HarmonyPatch(nameof(IntegrationSet.AddVelocityToCar))]
-public class IntegrationSet_AddVelocityToCar_Patch
+[HarmonyPatch(typeof(IntegrationSet), nameof(IntegrationSet.AddVelocityToCar))]
+public class IntegrationSet_AddVelocityToCar
 {
-	private static bool Prefix(IntegrationSet __instance, Car car, float velocity, float maxVelocity)
+	private static bool Prefix(IntegrationSet __instance, Model.Car car, float velocity, float maxVelocity)
 	{
-		if (Main.MySettings.DisablePushSpeedDistanceLimiter)
+		if (ModEntryPoint.MySettings!.DisablePushSpeedDistanceLimiter)
 		{
 			maxVelocity = 9999;
 		}
 		
-		velocity *= Main.MySettings.PushForceMultiplier;
-		
+		velocity *= ModEntryPoint.MySettings.PushForceMultiplier;
 		
 		float nextDistance = velocity * Time.fixedDeltaTime;
 		var indexOfCar = __instance.ValidIndexOfCar(car);
@@ -31,17 +28,17 @@ public class IntegrationSet_AddVelocityToCar_Patch
 		
 		var somethingVelocity = Mathf.Abs(nextPosition - element.oldPosition) / Time.fixedDeltaTime;
 
-		if (!Main.MySettings.DisablePushSpeedDistanceLimiter)
+		if (!ModEntryPoint.MySettings.DisablePushSpeedDistanceLimiter)
 		{
 			if (newVelocity < maxVelocity && somethingVelocity > maxVelocity ||
 			    newVelocity > maxVelocity && somethingVelocity > newVelocity)
 			{
-				return false;
+				return Constants.SKIP_ORIGINAL;
 			}
 		}
 
 		__instance._elements[indexOfCar].position = nextPosition;
 
-		return false;
+		return Constants.SKIP_ORIGINAL;
 	}
 }
